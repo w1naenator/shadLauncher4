@@ -66,15 +66,7 @@ set(BUILD_SHARED_LIBS OFF CACHE BOOL "" FORCE)
 add_subdirectory(openal-soft EXCLUDE_FROM_ALL)
 endif()
 
-#libdeflate
-
-# enable SIMD instructions
-if(MSVC)
-    add_compile_options(/O2 /arch:AVX2)
-else()
-    add_compile_options(-O3 -march=native)
-endif()
-
+# libdeflate selects supported SIMD implementations at runtime.
 add_subdirectory(libdeflate)
 
 # vulkan-headers
